@@ -1,9 +1,12 @@
+import Cartwidget from "../CartWidget/CartWidget"
+
 
 const Menu = () => {
-  return  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  return <div>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" target={"_blank"} href="https://www.instagram.com/ojoconurquiza/">Ojo con Urquiza</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" target={"_blank"} href="https://www.instagram.com/lamajadesnudaflamenca/">La Maja Indumentaria</a>
+    <button class="navbar-toggler" type="button" data-bs-togglgit se="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -18,13 +21,11 @@ const Menu = () => {
           <a class="nav-link active" aria-current="page" target={"_blank"} href="https://www.instagram.com/p/CeywR37ghgb/">Pantalones</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <Cartwidget />
     </div>
   </div>
 </nav>
+</div>
 }
 
 export default Menu
