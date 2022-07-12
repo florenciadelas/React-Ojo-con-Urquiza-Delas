@@ -32,6 +32,26 @@
   color: #23a696;
 }
 
+.botones{
+  color: white;
+  background-color:#23a696; 
+  width: 90px;
+  height: 40px;
+ font-size: 20px;
+ border:#23a696 ;
+}
+
+.form { 
+  background-color:  #f0f7f6;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: flex-end;
+  justify-content:center;
+  padding: 20px;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

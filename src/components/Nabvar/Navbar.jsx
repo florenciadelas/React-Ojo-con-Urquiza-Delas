@@ -1,7 +1,8 @@
 import Cartwidget from "../CartWidget/CartWidget"
 
 
-const Menu = () => {
+
+const Navbar = (props) => {
   return <div>
    <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <div className="container-fluid">
@@ -21,12 +22,12 @@ const Menu = () => {
           <a className="nav-link active" aria-current="page" target={"_blank"} href="https://www.instagram.com/p/CeywR37ghgb/">Pantalones</a>
         </li>
       </ul>
-      <Cartwidget />
+      <Cartwidget amount = {1}/>
     </div>
   </div>
 </nav>
 </div>
 }
 
-export default Menu
+export default Navbar
 
