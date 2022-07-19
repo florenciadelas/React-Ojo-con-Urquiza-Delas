@@ -22,7 +22,7 @@ const Navbar = (props) => {
           <a className="nav-link active" aria-current="page" target={"_blank"} href="https://www.instagram.com/p/CeywR37ghgb/">Pantalones</a>
         </li>
       </ul>
-      <Cartwidget amount = {1}/>
+      <Cartwidget amount = {0}/>
     </div>
   </div>
 </nav>

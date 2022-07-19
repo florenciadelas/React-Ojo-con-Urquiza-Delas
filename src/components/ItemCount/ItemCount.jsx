@@ -15,7 +15,7 @@ const ItemCount =(props) => {
     }
         return ( 
             <div>
-                <h3>{contador}</h3>
+                <h4>{contador}</h4>
             <button onClick={()=> controlOperacion("+")} className="botones">+</button>
             <button onClick={()=> controlOperacion("-")} className="botones">-</button>
             </div>

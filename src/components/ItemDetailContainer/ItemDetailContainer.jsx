@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import ItemList from "../ItemList/ItemList";
+import ItemDetail from "./ItemDetail";
 import Spinner from "../Spinner/Spinner";
 import details from "../../Details/details"
 
-const ItemListContainer = ({id}) => {
+
+const ItemDetailContainer = ({id}) => {
   
 
   let [items, setItems] = useState([]);
@@ -21,7 +22,7 @@ const ItemListContainer = ({id}) => {
 
     promiseItems
       .then((details) => {
-        setItems(details);
+        setItems(details[id]);
       })
       .catch((errorMsg) => {
         console.log(errorMsg);
@@ -34,9 +35,9 @@ const ItemListContainer = ({id}) => {
   if (loading) return <Spinner />;
   return (
     <>
-      <ItemList items={items} />
+      <ItemDetail items={items} />
     </>
   );
 };
 
-export default ItemListContainer; 
+export default ItemDetailContainer; 

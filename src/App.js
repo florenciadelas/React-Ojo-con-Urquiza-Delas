@@ -1,12 +1,14 @@
 // import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Nabvar/Navbar';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+//import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetailContainter from './components/ItemDetailContainer/ItemDetailContainer';
 
 function App() {
   return ( <>
     <Navbar />
-    < ItemListContainer />
+    {/* < ItemListContainer /> */}
+    <ItemDetailContainter id={3}/>
     </>
   );
 }
