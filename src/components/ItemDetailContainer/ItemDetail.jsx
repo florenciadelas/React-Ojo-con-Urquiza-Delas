@@ -1,6 +1,7 @@
-import ItemCount from "../ItemCount/ItemCount";
+import ItemCount from "../ItemCount/ItemCount"
 
-const ItemDetail = ({ items }) => {
+const ItemDetail = ({items}) => {
+console.log(items)
   return ( 
 <div>
     <div className="detalleItems">
@@ -14,7 +15,7 @@ const ItemDetail = ({ items }) => {
           <ItemCount stock={items.stock} initial={0} />
         </a>
       </div>
-    </div>
+    </div>  
     </div>
   );
 };

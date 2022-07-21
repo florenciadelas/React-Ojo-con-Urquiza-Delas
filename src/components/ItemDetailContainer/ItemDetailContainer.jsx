@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import ItemDetail from "./ItemDetail";
 import Spinner from "../Spinner/Spinner";
 import details from "../../Details/details"
+import { useParams } from "react-router-dom";
 
-
-const ItemDetailContainer = ({id}) => {
-  
+const ItemDetailContainer = () => {
+ const {id} = useParams()
+ console.log(id)
 
   let [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  console.log(items);
   
   useEffect(() => {
     setLoading(true);
@@ -21,8 +21,9 @@ const ItemDetailContainer = ({id}) => {
     });
 
     promiseItems
-      .then((details) => {
-        setItems(details[id]);
+      .then((res) => {
+          const itemOk = (res.filter(items => items.id == id));
+          setItems(itemOk)              
       })
       .catch((errorMsg) => {
         console.log(errorMsg);
@@ -30,7 +31,7 @@ const ItemDetailContainer = ({id}) => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [id]);
 
   if (loading) return <Spinner />;
   return (

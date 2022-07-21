@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import Spinner from "../Spinner/Spinner";
 import details from "../../Details/details"
+import { useParams } from "react-router-dom";
 
-const ItemListContainer = ({id}) => {
-  
+const ItemListContainer = ({}) => {
+  const {name} = useParams();
 
   let [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -21,7 +22,11 @@ const ItemListContainer = ({id}) => {
 
     promiseItems
       .then((details) => {
-        setItems(details);
+        const producto = details
+        if(name){
+          setItems(details.filter(producto => producto.categoria == name));
+        }else{
+          setItems(producto)}
       })
       .catch((errorMsg) => {
         console.log(errorMsg);
@@ -29,7 +34,7 @@ const ItemListContainer = ({id}) => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [name]);
 
   if (loading) return <Spinner />;
   return (

@@ -1,9 +1,10 @@
 import Cartwidget from "../CartWidget/CartWidget"
+import { Link } from "react-router-dom"
 
 
 
 const Navbar = (props) => {
-  return <div>
+  return <Link to="/">
    <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <div className="container-fluid">
     <a className="navbar-brand" target={"_blank"} href="https://www.instagram.com/lamajadesnudaflamenca/">La Maja Indumentaria</a>
@@ -12,21 +13,22 @@ const Navbar = (props) => {
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+      <Link to={"categoria/remeras"}>
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" target={"_blank"} href="https://www.instagram.com/p/CfXDywogSXX/">Remeras</a>
+          <a className="nav-link active" aria-current="page" target={"_blank"}>Remeras</a>
         </li>
+        </Link>
+        <Link to={"categoria/buzos"}>
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" target={"_blank"} href="https://www.instagram.com/p/CeEm3BdAIMN/">Buzos</a>
+          <a className="nav-link active" aria-current="page" target={"_blank"}>Buzos</a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link active" aria-current="page" target={"_blank"} href="https://www.instagram.com/p/CeywR37ghgb/">Pantalones</a>
-        </li>
+        </Link>
       </ul>
       <Cartwidget amount = {0}/>
     </div>
   </div>
 </nav>
-</div>
+</Link>
 }
 
 export default Navbar
