@@ -1,10 +1,11 @@
 import ItemCount from "../ItemCount/ItemCount"
 
 const ItemDetail = ({items}) => {
-console.log(items)
+
   return ( 
 <div>
     <div className="detalleItems">
+      
       <img src={items.url} alt="Card image cap"></img>
       <div className="descripcionItems" >
         <h1>{items.name}</h1>

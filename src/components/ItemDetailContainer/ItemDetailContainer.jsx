@@ -23,7 +23,7 @@ const ItemDetailContainer = () => {
     promiseItems
       .then((res) => {
           const itemOk = (res.filter(items => items.id == id));
-          setItems(itemOk)              
+          setItems(itemOk[0])              
       })
       .catch((errorMsg) => {
         console.log(errorMsg);
