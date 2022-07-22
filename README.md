@@ -68,3 +68,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+Este proyecto es un e-commerce para la venta de productos para la danza flamenca, donde se utilizo React para su creacion, y Bootstrap como framework. Dentro de este e-commerce se encuentran la pagina principal, con un Navbar donde se encuentra el brand con acceso a la pagina principal desde cualquier parte de la pagina, y ademas 2 categorias donde se filtra por categoria. Debajo del Navbar se encuentra el listado de todos los productos disponibles, para tener una vista rapida de la descripcion y el precio, y dentro se encuentra el acceso a la pagina donde esta el detalle de ese producto unicamente.
+A medida que se va recorriendo la pagina se puede ir agregando los diferentes productos en diferentes cantidades, y siempre muestra la opcion de volver a la pagina principal. 
