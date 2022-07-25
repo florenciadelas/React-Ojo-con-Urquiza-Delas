@@ -10,9 +10,6 @@ const Card = ({ url, name, price, stock, id}) => {
         <h5>{name}</h5>
         <p>{price}</p>
         <Link to={`/item/${id}`}><button>Ver mas detalle</button> </Link>
-        <a href="#" class="btn btn-primary">
-          <ItemCount stock={stock} initial={1} />
-        </a>
       </div>
     </div>
     </div>  

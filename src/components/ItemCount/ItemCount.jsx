@@ -1,15 +1,15 @@
 import { useState } from "react";
 
 
-const ItemCount =(props) => {
+const ItemCount =({stock= 10, onAdd, initial=0}) => {
    
-    const [contador, setCont] = useState(0)
+    const [contador, setCont] = useState(initial)
 
     const controlOperacion = (operacion) =>{
 
         if(operacion==="-" && contador > 0){
             setCont(contador-1)
-        }else if (operacion === "+" && contador < props.stock){
+        }else if (operacion === "+" && contador <stock){
             setCont(contador+1)
         }
     }
@@ -18,6 +18,7 @@ const ItemCount =(props) => {
                 <h4>{contador}</h4>
             <button onClick={()=> controlOperacion("+")} className="botones">+</button>
             <button onClick={()=> controlOperacion("-")} className="botones">-</button>
+            <button onClick={()=> onAdd(contador)} disabled={contador === "" || contador === 0} >Comprar</button>
             </div>
          );
         }
