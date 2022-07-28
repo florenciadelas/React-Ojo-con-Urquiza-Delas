@@ -1,9 +1,12 @@
+import { useContext } from "react";
+import { CartContext } from "../../Contexts/CartContext";
 
 
-const Cartwidget = (props) => {
+const Cartwidget = () => {
+  const { cartItems } = useContext(CartContext);
   return (
     <>
-      {props.amount}
+    <span>{cartItems.length}</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
