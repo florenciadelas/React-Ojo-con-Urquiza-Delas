@@ -3,25 +3,25 @@ import { CartContext } from "../../Contexts/CartContext";
 
 const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
-  const { cartItems } = useContext(CartContext);
+  const { itemsCarrito } = useContext(CartContext);
   useEffect(() => {
     let total = 0;
-    cartItems.forEach((item) => {
+    itemsCarrito.forEach((item) => {
       total += parseInt(item.price);
     });
     setTotalPrice(total);
-  }, [cartItems]);
+  }, [itemsCarrito]);
   return (
     <>
       <ul>
-        {cartItems.map((item) => (
+        {itemsCarrito.map((item) => (
           <>
             <li>{item.title}</li>
             <li>{item.price}</li>
           </> 
         ))}
       </ul>
-      <h1 className="bg-primary">{`Your total is: $${totalPrice}`}</h1>
+      <h1>{`Your total is: $${totalPrice}`}</h1>
     </>
   );
 };

@@ -6,14 +6,13 @@ import { useContext } from "react";
 
 const ItemDetail = ({items}) => {
 
-  const [amount, setAmount] = useState(0)
-  const { setCartItems } = useContext(CartContext);
- 
-  const onAdd = (amount) =>{
-    setAmount(amount)
-    setCartItems((prevState) => [...prevState, items]);
-  };
+  const [cantidad, setCantidad] = useState(0);
 
+  const { addItem } = useContext(CartContext);
+
+  const onAdd = (cant) => {
+    addItem(items, cant);
+  };
   return ( 
 <div>
     <div className="detalleItems">
@@ -25,7 +24,7 @@ const ItemDetail = ({items}) => {
         <h6>Genero: {items.genero}</h6>
         <h1>{items.price}</h1>
         <a >
-          {(amount == 0 && <ItemCount stock={items.stock} initial={0} onAdd={onAdd} />)}
+          {(cantidad == 0 && <ItemCount stock={items.stock} initial={0} onAdd={onAdd} />)}
       <Link to="/cart"><button>Ir al carrito</button> </Link>
         </a>
       </div>
