@@ -3,12 +3,11 @@ import ItemDetail from "./ItemDetail";
 import Spinner from "../Spinner/Spinner";
 import details from "../../Details/details"
 import { useParams } from "react-router-dom";
+import {getFirestore, doc, getDoc} from "firebase/firestore"
 
 const ItemDetailContainer = () => {
  const {id} = useParams()
- console.log(id)
-
-  let [items, setItems] = useState([]);
+  let [items, setItems] = useState({});
   const [loading, setLoading] = useState(false);
 
   
@@ -20,25 +19,18 @@ const ItemDetailContainer = () => {
       }, 2000);
     });
 
-    promiseItems
-      .then((res) => {
-          const itemOk = (res.filter(items => items.id == id));
-          setItems(itemOk[0])              
-      })
-      .catch((errorMsg) => {
-        console.log(errorMsg);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    const db = getFirestore();
+    const itemDoc = doc(db, "detalles", id);
+    getDoc(itemDoc).then((snapshot) => {
+      setItems({ ...snapshot.data(), id: snapshot.id });
+      setLoading(false);
+    });
   }, [id]);
-
-  if (loading) return <Spinner />;
-  return (
+  return loading ? <Spinner /> :
     <>
       <ItemDetail items={items} />
     </>
-  );
+  
 };
 
 export default ItemDetailContainer; 

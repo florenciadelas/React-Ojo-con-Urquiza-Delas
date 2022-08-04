@@ -7,28 +7,29 @@ const CartProvider = ({children}) => {
   const [itemsCarrito, setItemCarrito] = useState([]);
 
   const addItem = (item, quantity) => {
-    const newItem = isInCart(item);
-    if (newItem) {
-      quantity = quantity + newItem.quantity;
+   
+    if (isInCart(item)) {
+      const indexItem = itemsCarrito.findIndex((element) => element.item.id === item.id)
+      const newItemsCarrito = [...itemsCarrito]
+      newItemsCarrito[indexItem].quantity = newItemsCarrito[indexItem].quantity + quantity
       setItemCarrito(
-        itemsCarrito.splice(
-          itemsCarrito.findIndex((element) => element.item.id === item.id),
-          1
-        )
+       newItemsCarrito
       );
+    }else {
+      setItemCarrito([...itemsCarrito, { item, quantity }])
     }
-    setItemCarrito([...itemsCarrito, { item, quantity }]);
-  };
+  }
 
   const isInCart = (item) => {
-    return itemsCarrito.find((element) => element.item === item);
+    return itemsCarrito.find((element) => element.item.id === item.id);
   };
 
   const clear = () => {
     setItemCarrito([]);
   };
   const removeItem = (itemId) => {
-    setItemCarrito(itemsCarrito.filter((element) => element.item.id !== itemId));
+    const newItemsCarrito = itemsCarrito.filter((element) => element.item.id !== itemId)
+    setItemCarrito(newItemsCarrito);
   };
 
   const total = () => {
@@ -37,7 +38,8 @@ const CartProvider = ({children}) => {
       0
     );
   }
-};
+
   return <CartContext.Provider value={{ itemsCarrito, addItem, removeItem, clear, total }}>{children}</CartContext.Provider>;
 
+};
 export default CartProvider;

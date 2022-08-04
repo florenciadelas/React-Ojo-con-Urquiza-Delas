@@ -1,11 +1,10 @@
-// import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Nabvar/Navbar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainter from './components/ItemDetailContainer/ItemDetailContainer';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Cart from './components/Cart/Cart';
-import CartProvider from './Contexts/CartContext';
+import CartProvider from './components/Contexts/CartContext';
 
 function App() {
   return ( <>

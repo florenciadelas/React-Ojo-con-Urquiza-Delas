@@ -6,12 +6,12 @@ import { useContext } from "react";
 
 const ItemDetail = ({items}) => {
 
-  const [cantidad, setCantidad] = useState(0);
-
+  const [compro, setCompro] = useState(false)
   const { addItem } = useContext(CartContext);
 
   const onAdd = (cant) => {
     addItem(items, cant);
+    setCompro(true)
   };
   return ( 
 <div>
@@ -22,10 +22,10 @@ const ItemDetail = ({items}) => {
         <h1>{items.name}</h1>
         <h5>Categoria: {items.categoria}</h5>
         <h6>Genero: {items.genero}</h6>
-        <h1>{items.price}</h1>
+        <h1> $ {items.price}</h1>
         <a >
-          {(cantidad == 0 && <ItemCount stock={items.stock} initial={0} onAdd={onAdd} />)}
-      <Link to="/cart"><button>Ir al carrito</button> </Link>
+          {(compro == 0 ? <ItemCount key={items.id} stock={items.stock} initial={0} onAdd={onAdd} /> : <Link to="/cart"><button>Ir al carrito</button> </Link>)}
+      
         </a>
       </div>
     </div>  

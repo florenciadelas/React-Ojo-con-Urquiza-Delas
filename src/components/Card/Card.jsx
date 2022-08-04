@@ -1,7 +1,6 @@
-import ItemCount from "../ItemCount/ItemCount";
 import {Link} from "react-router-dom"
 
-const Card = ({ url, name, price, stock, id}) => {
+const Card = ({ url, name, price, id}) => {
   return ( 
 <div className="cards">
     <div className="card" style={{ width: "18rem" }}>
@@ -15,5 +14,5 @@ const Card = ({ url, name, price, stock, id}) => {
     </div>  
   );
 };
-
+  
 export default Card;
