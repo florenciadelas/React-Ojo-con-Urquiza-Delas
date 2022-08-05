@@ -20,7 +20,7 @@ const ItemDetailContainer = () => {
     });
 
     const db = getFirestore();
-    const itemDoc = doc(db, "detalles", id);
+    const itemDoc = doc(db, "items", id);
     getDoc(itemDoc).then((snapshot) => {
       setItems({ ...snapshot.data(), id: snapshot.id });
       setLoading(false);

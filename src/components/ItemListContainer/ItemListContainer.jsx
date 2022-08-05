@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { getFirestore, collection, getDocs} from "firebase/firestore"
 
 const ItemListContainer = ({}) => {
-  const {name} = useParams();
+  const {categoria} = useParams();
   let [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   
@@ -46,11 +46,16 @@ const ItemListContainer = ({}) => {
     const db = getFirestore();
     const itemsCollection = collection(db, "items");
     getDocs(itemsCollection).then((snapshot) => {
-      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+      if(categoria === undefined) { setItems(data[0].items);}
+       else{
+        const itemsFiltered = data[0].items.filter((product)=>{return product.categoria === categoria});
+        setItems(itemsFiltered);
+       }
       setItems(data);
       setLoading(false);
     });
-  }, [name]);
+  }, [categoria]);
 
   return loading ? <Spinner /> :
     <>
