@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 import {
   addDoc,
   collection,
@@ -11,22 +11,20 @@ import {
   documentId,
 } from "firebase/firestore";
 
-
 export const CartContext = createContext();
 
-const CartProvider = ({children}) => {
+const CartProvider = ({ children }) => {
   const [itemsCarrito, setItemCarrito] = useState([]);
 
   const sendOrder = async (totalPrice, buyerData) => {
-    const db = getFirestore(); 
+    const db = getFirestore();
     const orderCollection = collection(db, "orders");
     const order = {
       items: itemsCarrito,
       total: totalPrice,
       buyer: buyerData,
-      date: formatDate(new Date())
+      date: formatDate(new Date()),
     };
-
 
     const batch = writeBatch(db);
     const idList = itemsCarrito.map((product) => product.item.id);
@@ -54,34 +52,36 @@ const CartProvider = ({children}) => {
         ${addResponse.id}`,
         icon: "success",
         button: "Finalizar",
-      })}
+      });
+    }
+    clear();
   };
 
   const padTo2Digits = (num) => {
-    return num.toString().padStart(2, '0');
-  }
-  
+    return num.toString().padStart(2, "0");
+  };
+
   const formatDate = (date) => {
     return [
       padTo2Digits(date.getDate()),
       padTo2Digits(date.getMonth() + 1),
       date.getFullYear(),
-    ].join('/');
-  }
+    ].join("/");
+  };
 
   const addItem = (item, quantity) => {
-   
     if (isInCart(item)) {
-      const indexItem = itemsCarrito.findIndex((element) => element.item.id === item.id)
-      const newItemsCarrito = [...itemsCarrito]
-      newItemsCarrito[indexItem].quantity = newItemsCarrito[indexItem].quantity + quantity
-      setItemCarrito(
-       newItemsCarrito
+      const indexItem = itemsCarrito.findIndex(
+        (element) => element.item.id === item.id
       );
-    }else {
-      setItemCarrito([...itemsCarrito, { item, quantity }])
+      const newItemsCarrito = [...itemsCarrito];
+      newItemsCarrito[indexItem].quantity =
+        newItemsCarrito[indexItem].quantity + quantity;
+      setItemCarrito(newItemsCarrito);
+    } else {
+      setItemCarrito([...itemsCarrito, { item, quantity }]);
     }
-  }
+  };
 
   const isInCart = (item) => {
     return itemsCarrito.find((element) => element.item.id === item.id);
@@ -91,18 +91,26 @@ const CartProvider = ({children}) => {
     setItemCarrito([]);
   };
   const removeItem = (itemId) => {
-    const newItemsCarrito = itemsCarrito.filter((element) => element.item.id !== itemId)
+    const newItemsCarrito = itemsCarrito.filter(
+      (element) => element.item.id !== itemId
+    );
     setItemCarrito(newItemsCarrito);
   };
 
   const total = () => {
     return itemsCarrito.reduce(
-      (valorAnterior, valorActual) => valorAnterior + valorActual.item.price * valorActual.quantity,
+      (valorAnterior, valorActual) =>
+        valorAnterior + valorActual.item.price * valorActual.quantity,
       0
     );
-  }
+  };
 
-  return <CartContext.Provider value={{ itemsCarrito, addItem, removeItem, clear, total, sendOrder }}>{children}</CartContext.Provider>;
-
+  return (
+    <CartContext.Provider
+      value={{ itemsCarrito, addItem, removeItem, clear, total, sendOrder }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
 };
 export default CartProvider;

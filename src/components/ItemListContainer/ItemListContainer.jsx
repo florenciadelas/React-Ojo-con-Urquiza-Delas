@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import Spinner from "../Spinner/Spinner";
-import details from "../../Details/details"
+import details from "../../Details/details";
 import { useParams } from "react-router-dom";
-import { getFirestore, collection, getDocs} from "firebase/firestore"
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 const ItemListContainer = ({}) => {
-  const {categoria} = useParams();
+  let { name } = useParams();
   let [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
-  
-  useEffect(() => {
 
+  useEffect(() => {
     setLoading(true);
     let promiseItems = new Promise((resolve) => {
       setTimeout(() => {
@@ -19,24 +18,33 @@ const ItemListContainer = ({}) => {
       }, 2000);
     });
 
+    const categoria = name;
+
     const db = getFirestore();
     const itemsCollection = collection(db, "items");
     getDocs(itemsCollection).then((snapshot) => {
-      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-      if(categoria === undefined) { setItems(data[0].items);}
-       else{
-        const itemsFiltered = data[0].items.filter((product)=>{return product.categoria === categoria});
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      if (categoria === undefined) {
+        setItems(data);
+      } else {
+        const itemsFiltered = data.filter((product) => {
+          return product.categoria === categoria;
+        });
+
         setItems(itemsFiltered);
-       }
-      setItems(data);
+      }
+
       setLoading(false);
     });
-  }, [categoria]);
+  }, [name]);
 
-  return loading ? <Spinner /> :
+  return loading ? (
+    <Spinner />
+  ) : (
     <>
       <ItemList items={items} />
     </>
+  );
 };
 
-export default ItemListContainer; 
+export default ItemListContainer;

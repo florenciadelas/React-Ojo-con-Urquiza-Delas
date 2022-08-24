@@ -3,6 +3,11 @@ Proyecto Ojo con urquiza.
 Este proyecto es un e-commerce para la venta de productos de danza flamenca, donde se utilizo React para su creacion, y Bootstrap como framework. Dentro de este e-commerce se encuentran la pagina principal, con un Navbar donde se encuentra el brand con acceso a la pagina principal desde cualquier parte de la pagina, y ademas 2 categorias donde se filtra por categoria. Debajo del Navbar se encuentra el listado de todos los productos disponibles, para tener una vista rapida de la descripcion y el precio, y dentro de cada uno se encuentra el acceso a la pagina donde esta el detalle de ese producto unicamente.
 A medida que se va recorriendo la pagina se puede ir agregando los diferentes productos en diferentes cantidades, y siempre muestra la opcion de volver a la pagina principal.
 
+Ingreso a la aplicacion:
+Para ingresar a la aplicacion, desde la consola ingrese los siguientes comandos:
+- npm install
+- npm start
+- cd ojoconurquiza
 
 Dependencias
 

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import Spinner from "../Spinner/Spinner";
-import details from "../../Details/details"
+import details from "../../Details/details";
 import { useParams } from "react-router-dom";
-import {getFirestore, doc, getDoc} from "firebase/firestore"
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
- const {id} = useParams()
+  const { id } = useParams();
   let [items, setItems] = useState({});
   const [loading, setLoading] = useState(false);
 
-  
   useEffect(() => {
     setLoading(true);
     let promiseItems = new Promise((resolve) => {
@@ -26,11 +25,13 @@ const ItemDetailContainer = () => {
       setLoading(false);
     });
   }, [id]);
-  return loading ? <Spinner /> :
+  return loading ? (
+    <Spinner />
+  ) : (
     <>
       <ItemDetail items={items} />
     </>
-  
+  );
 };
 
-export default ItemDetailContainer; 
+export default ItemDetailContainer;
