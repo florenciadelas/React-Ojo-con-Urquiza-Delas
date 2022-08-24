@@ -31,4 +31,4 @@ Usado para el sistema de navegación entre páginas para que funcione como una S
 
 Sweet alert
 
-SweetAlert es un generador de popups facil y 
+SweetAlert es un generador de popups facil y esteticos.
