@@ -12,30 +12,6 @@ const ItemListContainer = ({}) => {
   
   useEffect(() => {
 
-// const db = getFirestore()
-// const docRef = doc(db, "items", "1")
-// getDoc(docRef).then((snapshot)=> {
-//   const data = {id: snapshot.id, ...snapshot.data()}
-// })
-
-// const db = getFirestore()
-// const itemsCollection = collection(db, "items")
-// getDocs(itemsCollection).then((snapchot) => {
-//   const data = snapchot.docs.map((doc) => ({ id: doc.id, ...doc.data()}))
-// })
-
-// const db = getFirestore()
-// const itemCollection = collection(db, "items")
-// const filteredCollection = query (
-//   itemCollection,
-//   where("name", "==", "Remera Lola")
-//   )
-//   getDocs(filteredCollection).then(snapshot =>{
-//     const data = snapshot.docs.map(doc => ({
-//       id: doc.id, ...doc.data()
-//     }))
-//   })
-
     setLoading(true);
     let promiseItems = new Promise((resolve) => {
       setTimeout(() => {

@@ -16,9 +16,9 @@ const ItemCount =({stock= 10, onAdd, initial=0}) => {
         return ( 
             <div>
                 <h4>{contador}</h4>
-            <button onClick={()=> controlOperacion("+")} className="botones">+</button>
-            <button onClick={()=> controlOperacion("-")} className="botones">-</button>
-            <button onClick={()=> onAdd(contador)} disabled={contador === "" || contador === 0} >Comprar</button>
+            <button onClick={()=> controlOperacion("+")} className="botonesSuma">+</button>
+            <button onClick={()=> controlOperacion("-")} className="botonesSuma">-</button>
+            <button onClick={()=> onAdd(contador)} className="botones" disabled={contador === "" || contador === 0} >Comprar</button>
             </div>
          );
         }

@@ -3,7 +3,7 @@ import Card from "../Card/Card";
 
 function ItemList(props) {
   return (
-    <div>
+    <div className="cards">
       {props.items.map((item) => {
         return (
           <Card

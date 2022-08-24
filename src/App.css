@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -32,37 +33,103 @@
   color: #23a696;
 }
 
-.botones{
+.container-fluid{
+  background-color: #f5fdfc;
+}
+
+.botonesSuma{
   color: white;
   background-color:#23a696; 
   width: 90px;
-  height: 40px;
- font-size: 20px;
+  height: 50px;
+ font-size: 17px;
  border:#23a696 ;
 }
 
+.botones{
+  color: white;
+  background-color:#24736a; 
+  width: 100px;
+  height: 50px;
+ font-size: 17px;
+ border:#23a696 ;
+}
+
+.card{
+display:flex;
+flex-direction: row;
+font-family:Arial, Helvetica, sans-serif;
+font-size: 100%;
+align-items: center;
+color: #286b63; 
+width: 350px;
+margin: auto;
+}
+
 .cards{
-display: inline-block;
-align-items:center;
-justify-content: space-around;
-font-family: 'Courier New', Courier, monospace;
+  display:flex;
+  flex-direction: row;
+}
+
+.img{
+  width: 100%;  
+  height: 100%;
 }
 
 .detalleItems{
   display: flex;
   flex-direction: row;
   justify-content:space-evenly;
-  font-family: 'Courier New', Courier, monospace;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 100%;
+  color: #286b63;  
+  margin: 10px;
+}
 
+label{
+  color: #286b63; 
+  font-weight:700;
 }
 
 .descripcionItems{
-  background-color: rgb(218, 215, 215);
+  background-color: rgb(229, 247, 240);
   width: 45%;
   display: flex;
   flex-direction: column;
   justify-content:space-around;
   align-items: center;
+}
+
+.infoCart{
+  display:flex;
+  flex-direction: row;
+}
+
+.formulario{
+  background-color:rgb(229, 247, 240);
+  width: 50%;
+  display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.ticket{
+  width: 50%;
+  display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+font-size:100%; 
+}
+
+.infoTicket{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.colorPrecio{
+  color: #0e3f3a; 
 }
 
 @keyframes App-logo-spin {
